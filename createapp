@@ -1,0 +1,8 @@
+django 应用文件
+====
+init.py：py包初始文件
+admin.py：后台管理系统配置文件
+apps.py:应用配置文件
+models.py:应用模型文件
+tests.py:应用测试文件
+view.py：应用视图文件
