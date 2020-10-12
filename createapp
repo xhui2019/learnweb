@@ -6,3 +6,5 @@ apps.py:应用配置文件
 models.py:应用模型文件
 tests.py:应用测试文件
 view.py：应用视图文件
+
+view.py 创建web视图页面,项目配置文件urls.py进行url配置
