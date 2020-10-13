@@ -6,5 +6,19 @@ apps.py:应用配置文件
 models.py:应用模型文件
 tests.py:应用测试文件
 view.py：应用视图文件
-
 view.py 创建web视图页面,项目配置文件urls.py进行url配置
+
+Django 配置
+===
+1、Django项目配置文件包含Django应用的所有配置项
+2、在web服务器中部署项目，Django项目的配置文件为settings.py
+#配置文件的特性
+1、配置项：settings.py配置文件中所有的配置项都是大写
+2、默认值：settings.py在项目创建时，就初始化了一些默认配置，这些默认配置承载着最基础的项目信息
+3、配置规则：配置过程中，可以随时通过 python manage.py diffsettings命令显示当前设定与Django默认设定不同之处，当前settings出现与默认没有的项，该项目最后会有###
+4、安全性：对于settings文件包含信息，涉及安全，需要严格控制访问权限
+
+WSGI
+===
+WSGI: web server gateway interface，是一种从应用程序或者框架（Django，Flask）和服务器（uWSGI,Gunicom）之间的接口。是一种协议范，用于解决众多web框架和web server软件的兼容问题
+http请求过程分两个阶段，1、从客户端到 WSGI Server，2、从WSGI Server 到WSGI Application
