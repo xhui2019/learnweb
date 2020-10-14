@@ -1,1 +1,4 @@
-
+要点：URL配置，URL参数传递，反向解析URL，URL命名空间
+URL配置：URL解析函数建立URL模式与视图函数之间的映射关系，也就是设置访问视图函数的URL规则
+##从url获取参数：path('getdata/<urlData>/<urlData>/', views.getData), 视图中传入urlData参数，注意视图中getdata定义的传参值需要和path中的<>中定义的参数相同
+##从其他app获取调用url和视图功能，：path("root/", include('test1014.urls'))，跳转至test1014app中，匹配其url配置并调用对于的视图函数
