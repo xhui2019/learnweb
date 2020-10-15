@@ -2,3 +2,12 @@
 URL配置：URL解析函数建立URL模式与视图函数之间的映射关系，也就是设置访问视图函数的URL规则
 ##从url获取参数：path('getdata/<urlData>/<urlData>/', views.getData), 视图中传入urlData参数，注意视图中getdata定义的传参值需要和path中的<>中定义的参数相同
 ##从其他app获取调用url和视图功能，：path("root/", include('test1014.urls'))，跳转至test1014app中，匹配其url配置并调用对于的视图函数
+
+路径转换器
+=====
+#str ： 匹配除了路径分隔符/之外的非空字符串，未指定情况下，默认使用str，获取的数据为字符串
+#int ： 匹配0和正整数，获取的数据为int类型
+#slug ： 匹配数字、字母、横杠、下划线组成的字符串，获取的数据为字符串类型
+#uuid ： 匹配格式化的UUID，如ada-sdadadad-001sad990，获取的数据为UUID实例
+#path ：匹配任何非空字符串，包含了路径分隔符/，获取的数据为字符串
+格式： getdata/<str ：urlData>
