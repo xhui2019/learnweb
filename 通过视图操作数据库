@@ -1,0 +1,41 @@
+from django.db import models
+class test1022DB(models.Model):   #创建数据库表，
+    name=models.CharField(max_length=32)
+    age=models.IntegerField()
+
+通过python manage.py makemigration 和python manage.py migrate  命令在数据中生成表
+
+from test1016.models import test1022DB
+def useModels(request):
+    _name = request.GET['name']    ##通过url request get方法从Url获取数据。url格式 xxxurl/?name=xx&age=xx
+    _age = request.GET['age']
+    test1022DB.objects.create(name=_name, age=_age)   #向数据库写入数据
+    s = "默认数据库中表中的<br><table><tr><td>id</td><td>name</td><td>age</td></tr>"  #制表进行数据显示
+    for i in test1022DB.objects.all():       ##读取数据库全部数据 
+        s += "<tr><td>%s</td><td>%s</td><td>%s</td></tr>" % (i.id, i.name, i.age)
+    return HttpResponse(s)
+ 
+Page分页
+##
+from django.core.paginator import Paginator
+str=['a', 'b', 'c', 1, 2, 3, 4,5]
+p=Paginator(str,2)   # Paginator(object,per_page,orphan=0,allow_empty_first_page=True) ,object:用于分页的对象，per_page:每页允许的最大对象数，
+                           orphan：最后一页最大对象数，allow...page：第一页是否允许为空，默认True，允许为空
+print(p.count)       #属性，所有页面属性总数
+print(p.num_pages)   #属性，页面总数
+print(p.page_range)  #返回迭代器
+print(p.get_page(1)) #获取固定第x页面对象
+print(p.page(2))     #同上，获取第x页面
+##page对象的属性和方法
+p2=page.page(2)
+print(p2.object_list)                ##返回当前页面的所有对象
+print(p2.number)                     ##返回当前页面的页码
+print(p2.paginator)                  ##返回当前页面关联的页码
+print(page.page(3).paginator)         
+print(p2.has_next())                 ##是否有下一页，存在返回True
+print(p2.has_previous())             ##是否有上一页，存在返回True
+print(p2.has_other_pages())          ##是否有上或下一页，存在返回True 
+print(p2.next_page_number())         ##返回下一页的页码
+print(p2.previous_page_number())     ##返回上一页的页码
+print(p2.start_index())              ##返回当前页的第一条数据在所有分页器数据中的页面数。如6条数据分4页，则第二页第一条数据为索引为3
+print(p2.end_index())                ##返回当前页的最后一条数据在所有分页器数据中的页面数。如6条数据分4页，则第二页最后一条数据为索引为4
