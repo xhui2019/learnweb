@@ -29,3 +29,13 @@ return HttpResponse("一级标题"，conntent_type="text/plain";charset="utf-8")
     r["Content-Disposition"] = "attachment;filename=data.csv"
     w=csv.writer(r)  #以HttpResponse对象作为csv.writer参数进行写
     w.writerow(["ads"])
+
+使用Template形式进行响应
+from django.template.response import TemplateResponse
+def useTemplate(request):
+    return TemplateResponse(request,"useTemplate.html",{"name":"zxh","age":12})
+####useTemplate.html内容如下：
+<body>
+    <b>姓名：</b>{{name}}<br/>
+    <b>年龄：</b>{{age}}<br/>
+</body>
